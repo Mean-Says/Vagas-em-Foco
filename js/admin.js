@@ -3,7 +3,7 @@ function checkAuthentication() {
     const token = localStorage.getItem('token');
     if (!token) {
         alert('Você precisa fazer login para acessar esta página.');
-        window.location.href = '/frontend/login.html'; // Redireciona para a página de login
+        window.location.href = '/login.html'; // Redireciona para a página de login
     }
 }
 
@@ -78,7 +78,7 @@ document.getElementById('updateButton').addEventListener('click', async function
     }
 
     try {
-        const response = await fetch(`http://127.0.0.1:5000/api/update_job/${vagaId}`, {
+        const response = await fetch(`https://meansayss.pythonanywhere.com/api/update_job/${vagaId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ document.getElementById('deleteButton').addEventListener('click', async function
     }
 
     try {
-        const response = await fetch(`http://127.0.0.1:5000/api/job/${vagaId}`, {
+        const response = await fetch(`https://meansayss.pythonanywhere.com/api/job/${vagaId}`, {
             method: 'DELETE',
         });
 
