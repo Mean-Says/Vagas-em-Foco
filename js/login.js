@@ -16,7 +16,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
         if (response.ok) {
             const data = await response.json();
             localStorage.setItem('token', data.token); // Armazena o token no localStorage
-            window.location.href = '/frontend/admin.html'; // Redireciona para a página admin
+            window.location.href = '/admin.html'; // Redireciona para a página admin
         } else {
             const data = await response.json();
             document.getElementById('error-message').innerText = data.error || 'Erro ao fazer login';
