@@ -36,7 +36,7 @@ async function fetchVagas(query = '', page = currentPage) {
                             <span><i> Postado em ${new Date(vaga.created_at).toLocaleDateString()}</i></span>
                         </div>
                         <p>${shortDescription.replace(/\n/g, '<br>')}</p> <!-- Renderiza a descrição com quebras de linha -->
-                        <a href="/frontend/vaga.html?id=${vaga.id}">Ver mais</a> <!-- Link para a página de detalhes da vaga -->
+                        <a href="/vaga.html?id=${vaga.id}">Ver mais</a> <!-- Link para a página de detalhes da vaga -->
                     </div>
                 `;
                 vagasDiv.innerHTML += vagaElement;
