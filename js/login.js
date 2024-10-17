@@ -5,21 +5,30 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     const password = document.getElementById('password').value;
 
     try {
-        const response = await fetch('https://meansayss.pythonanywhere.com/api/login', {
+        const response = await fetch('https://meansayss.pythonanywhere.com/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ username, password })
+            body: JSON.stringify({ 
+                "username": username,
+                "password": password 
+            })
         });
 
+        const data = await response.json();
+
         if (response.ok) {
-            const data = await response.json();
-            localStorage.setItem('token', data.token); // Armazena o token no localStorage
-            window.location.href = '/admin.html'; // Redireciona para a página admin
+            // Verifique se a resposta contém o token de acesso
+            if (data.access_token) {
+                localStorage.setItem('token', data.access_token); // Armazena o token no localStorage
+                window.location.href = '/admin.html'; // Redireciona para a página admin
+            } else {
+                throw new Error('Token não encontrado na resposta');
+            }
         } else {
-            const data = await response.json();
-            document.getElementById('error-message').innerText = data.error || 'Erro ao fazer login';
+            // Se a resposta não for ok, exibe a mensagem de erro
+            document.getElementById('error-message').innerText = data.error || data.msg || 'Erro ao fazer login';
         }
     } catch (error) {
         console.error('Erro ao fazer login:', error);
