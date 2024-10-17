@@ -1,27 +1,29 @@
-<DOCTYPE html>
-    <html lang="PT-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin - Criar, Atualizar ou Deletar Vaga</title>
-        <link rel="stylesheet" href="/css/admin.css">
-    </head>
-    <body>
-    
-        <form id="vagaForm">
-            <input type="text" id="title" placeholder="Título da Vaga" required>
-            <textarea id="description" class="description" placeholder="Descrição" required></textarea>
-            <input type="text" id="link" placeholder="Link para a Vaga" required>
-            
-            <!-- Campo para o ID da vaga, necessário para a atualização e exclusão -->
-            <input type="text" id="vagaId" placeholder="ID da Vaga (para atualizar/deletar)">
-            
-            <button type="submit">Criar Vaga</button>
-            <button id="updateButton" type="button">Atualizar Vaga</button>
-            <button id="deleteButton" type="button">Deletar Vaga</button>
-        </form>
-    
-        <script src="/js/admin.js"></script>
-    </body>
-    </html>
-    
+<!DOCTYPE html>
+<html lang="PT-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Criar, Atualizar ou Deletar Vaga</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+    <!-- Botão de voltar para a página inicial -->
+    <a href="index.html" id="backButton">Voltar</a>
+
+    <form id="vagaForm">
+        <input type="text" id="title" placeholder="Título da Vaga" required>
+        <textarea id="description" class="description" placeholder="Descrição" required></textarea>
+        <input type="text" id="link" placeholder="Link para a Vaga" required>
+        
+        <!-- Campo para o ID da vaga, necessário para a atualização e exclusão -->
+        <input type="text" id="vagaId" placeholder="ID da Vaga (para atualizar/deletar)">
+        
+        <button type="submit">Criar Vaga</button>
+        <button id="updateButton" type="button">Atualizar Vaga</button>
+        <button id="deleteButton" type="button">Deletar Vaga</button>
+    </form>
+
+    <script src="/js/admin.js"></script>
+</body>
+</html>

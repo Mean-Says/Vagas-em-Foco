@@ -13,6 +13,25 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    position: relative; /* Necessário para posicionar o botão de voltar */
+}
+
+/* Botão de voltar para a página inicial */
+#backButton {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#backButton:hover {
+    background-color: #0056b3;
 }
 
 /* Estilo do formulário */
@@ -37,7 +56,7 @@ form#vagaForm textarea {
     border: 1px solid #ddd;
     border-radius: 8px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    resize: none; /* Desabilita o redimensionamento do campo */
+    resize: none;
     background-color: #f9f9f9;
 }
 
@@ -50,15 +69,15 @@ form#vagaForm textarea:focus {
 
 /* Campo de descrição maior */
 form#vagaForm textarea {
-    height: 150px; /* Altura ajustada para a descrição */
+    height: 150px;
 }
 
-/* admin.css */
+/* Campo de descrição com quebra de linha */
 .description {
-    white-space: pre-wrap; /* Mantém quebras de linha e espaços */
+    white-space: pre-wrap;
 }
 
-/* Botões */
+/* Botões do formulário */
 form#vagaForm button {
     padding: 14px;
     font-size: 16px;

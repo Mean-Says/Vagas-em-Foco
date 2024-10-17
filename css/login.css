@@ -52,3 +52,29 @@ form#loginForm button {
 form#loginForm button:hover {
     background-color: #0056b3;
 }
+
+/* Estilo para o contêiner de senha e o botão de alternar visibilidade */
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input {
+    flex-grow: 1;
+}
+
+.password-container button {
+    position: absolute;
+    right: 0px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #007BFF;
+    transition: color 0.3s ease;
+}
+
+.password-container button:hover {
+    color: #0056b3;
+}
