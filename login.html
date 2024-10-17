@@ -6,13 +6,22 @@
     <title>Login</title>
     <link rel="stylesheet" href="/css/login.css">
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MCM5JYP4RZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MCM5JYP4RZ');
+</script>
 <body>
     <form id="loginForm">
         <h2>Login</h2>
-        <input type="text" id="username" placeholder="Usuário" required>
+        <input type="text" id="username" placeholder="Usuário" autocomplete="off" required>
 
         <div class="password-container">
-            <input type="password" id="password" placeholder="Senha" required>
+            <input type="password" id="password" placeholder="Senha" autocomplete="off" required>
             <button type="button" id="togglePassword">👀</button>
         </div>
 
