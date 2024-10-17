@@ -2,6 +2,7 @@ let currentPage = 1; // Página atual
 const limit = 5; // Limite de vagas por requisição
 let isLoading = false; // Para evitar múltiplas requisições ao mesmo tempo
 const displayedJobIds = new Set(); // Conjunto para armazenar IDs de vagas exibidas
+let totalVagas = 0; // Armazenar o número total de vagas retornado pela API
 
 // Função para buscar vagas da API (com ou sem pesquisa)
 async function fetchVagas(query = '', page = currentPage) {
@@ -12,7 +13,10 @@ async function fetchVagas(query = '', page = currentPage) {
 
         isLoading = true; // Indica que a requisição está em andamento
         const response = await fetch(url);
-        const vagas = await response.json();
+        const data = await response.json();  // A resposta agora contém `total_vagas` e `vagas`
+        const vagas = data.vagas;
+        totalVagas = data.total_vagas; // Atualiza o total de vagas
+
         const vagasDiv = document.querySelector('.vagasdiv');
 
         // Verifica se houve erro na busca
@@ -42,9 +46,15 @@ async function fetchVagas(query = '', page = currentPage) {
                 vagasDiv.innerHTML += vagaElement;
             }
         });
+
+        // Verifica se todas as vagas foram carregadas
+        if (displayedJobIds.size >= totalVagas) {
+            window.removeEventListener('scroll', handleScroll); // Remove o evento de rolagem se todas as vagas foram carregadas
+        }
+        
     } catch (error) {
         console.error('Erro ao buscar vagas: ', error);
-        document.querySelector('.vagasdiv').innerHTML += `<div class = "semVagas">
+        document.querySelector('.vagasdiv').innerHTML += `<div class="semVagas">
             <p>Erro ao carregar vagas. Tente novamente mais tarde.</p>
             </div>
         `;
@@ -53,31 +63,16 @@ async function fetchVagas(query = '', page = currentPage) {
     }
 }
 
-// Função para lidar com a pesquisa de vagas
-function handleSearch(event) {
-    event.preventDefault(); // Impede o recarregamento da página
-
-    const searchInput = document.querySelector('#searchInput').value.trim();
-    currentPage = 1; // Reinicia a contagem de páginas
-    document.querySelector('.vagasdiv').innerHTML = ''; // Limpa as vagas anteriores
-    displayedJobIds.clear(); // Limpa o conjunto de IDs exibidos
-    fetchVagas(searchInput, currentPage); // Faz a busca com o termo digitado
-}
-
 // Função para verificar se o usuário rolou para o final da página
 function handleScroll() {
     const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
     // Se o usuário rolou até o final e não há requisição em andamento
     if (scrollTop + clientHeight >= scrollHeight - 5 && !isLoading) {
         currentPage++; // Incrementa a página
-        fetchVagas('', currentPage); // Chama a função para buscar mais vagas
+
+        // Se já carregamos todas as vagas, não faz mais requisições
+        if (displayedJobIds.size < totalVagas) {
+            fetchVagas('', currentPage); // Chama a função para buscar mais vagas
+        }
     }
 }
-
-// Inicializa as vagas e configura a funcionalidade de pesquisa
-window.onload = function() {
-    fetchVagas(); // Carrega as vagas ao iniciar a página
-    window.addEventListener('scroll', handleScroll); // Adiciona o evento de rolagem
-    const searchForm = document.querySelector('#searchForm');
-    searchForm.addEventListener('submit', handleSearch); // Adiciona o evento de busca ao formulário
-};
