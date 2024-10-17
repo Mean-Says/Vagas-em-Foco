@@ -188,6 +188,9 @@ header a:hover {
         align-items: flex-start;
     }
 
+    .search-bar {
+        width: 100%;
+    }
     .search-bar form {
         width: 80%;
     }
@@ -201,6 +204,9 @@ header a:hover {
     .model {
         width: 95%;
         padding: 10px;
+    }
+    .search-bar {
+        width: 100%;
     }
 
     .search-bar form {
