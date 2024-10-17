@@ -79,7 +79,8 @@ body {
 }
 
 .voltar-link:hover {
-    color: #0c47a1; /* Cor escura ao passar o mouse */
+
+    background-color: #0a3d88; /* Cor escura ao passar o mouse */
 }
 
 /* Restante do estilo da vaga continua igual */
