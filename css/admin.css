@@ -1,0 +1,105 @@
+/* admin.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Estilo do formulário */
+form#vagaForm {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Inputs e textarea */
+form#vagaForm input, 
+form#vagaForm textarea {
+    padding: 14px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    resize: none; /* Desabilita o redimensionamento do campo */
+    background-color: #f9f9f9;
+}
+
+form#vagaForm input:focus,
+form#vagaForm textarea:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
+/* Campo de descrição maior */
+form#vagaForm textarea {
+    height: 150px; /* Altura ajustada para a descrição */
+}
+
+/* admin.css */
+.description {
+    white-space: pre-wrap; /* Mantém quebras de linha e espaços */
+}
+
+/* Botões */
+form#vagaForm button {
+    padding: 14px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+form#vagaForm button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+form#vagaForm button:active {
+    background-color: #004494;
+    transform: translateY(0);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    form#vagaForm {
+        width: 90%;
+        padding: 30px;
+    }
+
+    form#vagaForm textarea {
+        height: 100px;
+    }
+}
+
+/* Animação suave ao carregar o formulário */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

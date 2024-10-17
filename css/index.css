@@ -1,0 +1,211 @@
+/* Geral */
+body {
+    background-color: #f0f4f8; /* Fundo claro e neutro */
+    font-family: 'Arial', sans-serif;
+    color: #2c3e50; /* Texto escuro para boa legibilidade */
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Garante que o body tenha pelo menos a altura da tela */
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    padding: 20px;
+    background-color: #34495e; /* Azul escuro */
+    color: #ffffff; /* Texto branco */
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+header a {
+    text-decoration: none;
+    color: #ffffff; /* Links em branco */
+    display: block;
+    margin-top: 5px;
+    transition: color 0.3s;
+}
+
+header a:hover {
+    color: #1abc9c; /* Verde suave ao passar o mouse */
+}
+
+.vagasdiv {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+/* Estilo das vagas */
+.model {
+    background-color: #ffffff; /* Fundo branco para os cards */
+    width: 40%;
+    margin: 20px auto;
+    border: 1px solid #ddd; /* Borda cinza suave */
+    border-radius: 10px; /* Cantos arredondados */
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.model:hover {
+    transform: translateY(-3px); /* Leve movimento para cima */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.title_date {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.model h2 {
+    margin: 10px 0;
+    font-size: 1.75em; /* Aumentado para mais destaque */
+    color: #34495e; /* Azul escuro para títulos */
+}
+
+.model p {
+    color: #555; /* Texto suave */
+    margin-bottom: 10px;
+    line-height: 1.5; /* Aumenta o espaçamento entre linhas */
+}
+
+.model span {
+    display: block;
+    margin-top: 5px;
+    color: #888; /* Texto de menor importância */
+}
+
+.model a {
+    text-decoration: none;
+    color: #34495e; /* Azul escuro para links */
+    font-weight: bold;
+    border-bottom: 1px solid transparent; /* Adiciona efeito ao hover */
+    transition: border-color 0.3s, color 0.3s;
+}
+
+.model a:hover {
+    color: #1abc9c; /* Verde suave para links ao passar o mouse */
+    border-bottom: 1px solid #34495e; /* Efeito ao passar o mouse */
+}
+
+/* Estilos para a barra de pesquisa */
+.search-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0; /* Aumenta o espaço vertical */
+}
+
+.search-bar form {
+    display: flex;
+    width: 60%;
+}
+
+.search-bar input[type="text"] {
+    flex: 1; /* Isso faz o campo de entrada ocupar o espaço disponível */
+    padding: 12px;
+    font-size: 1.1em; /* Aumentado para melhor legibilidade */
+    border: 1px solid #ddd; /* Borda cinza suave */
+    border-radius: 5px 0 0 5px; /* Cantos arredondados apenas no lado esquerdo */
+    border-right: none; /* Remove a borda direita para o botão se alinhar ao input */
+    transition: border-color 0.3s;
+}
+
+.search-bar input[type="text"]:focus {
+    border-color: #1abc9c; /* Borda verde ao focar */
+    outline: none; /* Remove o contorno padrão */
+}
+
+.search-bar button {
+    padding: 12px 20px;
+    font-size: 1.1em; /* Aumentado para melhor legibilidade */
+    border: none;
+    background-color: #2980b9; /* Azul moderado */
+    color: white;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0; /* Cantos arredondados apenas no lado direito */
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.search-bar button:hover {
+    background-color: #1f639b; /* Azul escuro ao passar o mouse */
+    transform: translateY(-2px); /* Leve movimento para cima no hover */
+}
+
+.semVagas {
+    color: #fff; /* Cor do texto */
+    background-color: #f44336; /* Cor de fundo (vermelho) */
+    padding: 10px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    margin-top: 20px; /* Margem superior */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Estilo do rodapé */
+.footer {
+    margin-top: auto; /* Empurra o footer para o final */
+    background-color: #34495e; /* Azul escuro */
+    color: #ffffff; /* Texto branco */
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin: 10px 0;
+}
+
+.footer-content a {
+    color: #1abc9c; /* Verde suave para links no rodapé */
+    text-decoration: none; /* Remove underline */
+    transition: text-decoration 0.3s;
+}
+
+.footer-content a:hover {
+    text-decoration: underline; /* Adiciona underline ao passar o mouse */
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 0.8em; /* Tamanho da fonte para direitos autorais */
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .model {
+        width: 80%;
+        padding: 15px;
+    }
+
+    .title_date {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-bar form {
+        width: 80%;
+    }
+
+    .search-bar input[type="text"] {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .model {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .search-bar form {
+        width: 95%;
+    }
+
+    .search-bar input[type="text"] {
+        width: 80%;
+    }
+}
