@@ -178,6 +178,11 @@ header a:hover {
     font-size: 0.8em; /* Tamanho da fonte para direitos autorais */
 }
 
+.h3{
+    margin: 0;
+    text-align: center;
+}
+
 /* Responsividade */
 @media screen and (max-width: 768px) {
     .model {
