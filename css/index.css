@@ -8,6 +8,7 @@ body {
     min-height: 100vh; /* Garante que o body tenha pelo menos a altura da tela */
     display: flex;
     flex-direction: column;
+    line-height: 1.6; /* Melhor legibilidade */
 }
 
 header {
@@ -39,7 +40,6 @@ header a:hover {
 .model {
     background-color: #ffffff; /* Fundo branco para os cards */
     width: 50%;
-    
     margin: 20px auto;
     border: 1px solid #ddd; /* Borda cinza suave */
     border-radius: 10px; /* Cantos arredondados */
@@ -63,6 +63,7 @@ header a:hover {
     margin: 10px 0;
     font-size: 1.65em; /* Aumentado para mais destaque */
     color: #34495e; /* Azul escuro para títulos */
+    text-align: left;
 }
 
 .model p {
@@ -95,7 +96,7 @@ header a:hover {
     width: 55%;
     display: flex;
     justify-content: center;
-    margin: 0 auto ; /* Aumenta o espaço vertical */
+    margin: 0 auto; /* Aumenta o espaço vertical */
     margin-top: 30px;
 }
 
@@ -135,6 +136,7 @@ header a:hover {
     transform: translateY(-2px); /* Leve movimento para cima no hover */
 }
 
+/* Mensagem de "sem vagas" */
 .semVagas {
     color: #fff; /* Cor do texto */
     background-color: #f44336; /* Cor de fundo (vermelho) */
@@ -205,6 +207,7 @@ header a:hover {
         width: 95%;
         padding: 10px;
     }
+
     .search-bar {
         width: 100%;
     }
