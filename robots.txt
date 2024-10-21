@@ -1,0 +1,15 @@
+# robots.txt para o site Vagas em Foco
+
+# Bloquear todos os rastreadores de acessar arquivos confidenciais e pastas específicas
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /register/
+Disallow: /api/
+Disallow: /private/
+
+# Permitir que tudo mais seja rastreado
+Allow: /
+
+# Sitemap para facilitar a indexação das páginas
+Sitemap: https://rafaelmoreno.tech/sitemap.xml
