@@ -30,14 +30,18 @@ async function fetchVagas(query = '', page = currentPage) {
                     : vaga.description; // Limita a descrição a 100 caracteres
 
                 const vagaElement = `
-                    <div class="model">
-                        <div class="title_date">
-                            <h2>${vaga.title}</h2>
-                            <span><i> Postado em ${new Date(vaga.created_at).toLocaleDateString()}</i></span>
+                    <div class="box">
+                        <div class="model">
+                            <div class="title_date">
+                                <h2>${vaga.title}</h2>
+                                <span><i>Postado em ${new Date(vaga.created_at).toLocaleDateString()}</i></span>
+                            </div>
+                            <p>${shortDescription.replace(/\n/g, '<br>')}</p> <!-- Renderiza a descrição com quebras de linha -->
+                            <a href="/vaga.html?id=${vaga.id}">Ver mais</a> <!-- Link para a página de detalhes da vaga -->
                         </div>
-                        <p>${shortDescription.replace(/\n/g, '<br>')}</p> <!-- Renderiza a descrição com quebras de linha -->
-                        <a href="/vaga.html?id=${vaga.id}">Ver mais</a> <!-- Link para a página de detalhes da vaga -->
+                        
                     </div>
+
                 `;
                 vagasDiv.innerHTML += vagaElement;
             }
@@ -52,6 +56,48 @@ async function fetchVagas(query = '', page = currentPage) {
         isLoading = false; // Define isLoading como false após a requisição
     }
 }
+
+// Função para buscar os tipos de trabalho mais comuns
+async function fetchJobTypes() {
+    try {
+        const response = await fetch('https://meansayss.pythonanywhere.com/api/job_types');
+        const jobTypes = await response.json();
+
+        // Verifica se houve erro na resposta
+        if (jobTypes.error) {
+            console.error('Erro ao buscar tipos de trabalho:', jobTypes.error);
+            return;
+        }
+
+        const jobTypesDiv = document.querySelector('.jobtypes'); // Div onde os tipos serão exibidos
+        jobTypesDiv.innerHTML = "";
+        jobTypes.forEach(type => {
+            jobTypesDiv.innerHTML += `
+                <a href="#" onclick="searchByJobType('${type.type}')">
+                    ${type.type} 
+                </a>
+            `;
+        });
+    } catch (error) {
+        console.error('Erro ao buscar tipos de trabalho:', error);
+    }
+}
+
+// Função para buscar vagas com base no tipo de trabalho clicado
+function searchByJobType(jobType) {
+    currentPage = 1; // Reinicia a contagem de páginas
+    document.querySelector('.vagasdiv').innerHTML = ''; // Limpa as vagas anteriores
+    displayedJobIds.clear(); // Limpa o conjunto de IDs exibidos
+
+    // Define o valor do campo de entrada com o item pesquisado
+    const searchInput = document.querySelector('#searchInput'); // Seleciona o campo de entrada de pesquisa
+    searchInput.value = jobType; // Atualiza o valor do campo de entrada
+
+    // Realiza a pesquisa com o tipo de trabalho selecionado
+    fetchVagas(jobType, currentPage);
+}
+
+
 
 // Função para lidar com a pesquisa de vagas
 function handleSearch(event) {
@@ -74,9 +120,12 @@ function handleScroll() {
     }
 }
 
+
+
 // Inicializa as vagas e configura a funcionalidade de pesquisa
 window.onload = function() {
     fetchVagas(); // Carrega as vagas ao iniciar a página
+    fetchJobTypes();
     window.addEventListener('scroll', handleScroll); // Adiciona o evento de rolagem
     const searchForm = document.querySelector('#searchForm');
     searchForm.addEventListener('submit', handleSearch); // Adiciona o evento de busca ao formulário

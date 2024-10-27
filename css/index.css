@@ -12,24 +12,32 @@ body {
 }
 
 header {
+    height: fit-content;
+    display: flex;
+    color: #ffffff;
+    text-align: start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+header h1 {
     padding: 10px;
-    background-color: #34495e; /* Azul escuro */
-    color: #ffffff; /* Texto branco */
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    margin: 0;
+    color: #34495e; /* Azul escuro */
+    font-size: 1em;
 }
-
-header a {
+header a{
+    color: #34495e; /* Azul escuro */
+    font-size: 1em;
+    margin: 0;
+    padding: 10px;
     text-decoration: none;
-    color: #ffffff; /* Links em branco */
-    display: block;
-    margin-top: 5px;
-    transition: color 0.3s;
 }
 
-header a:hover {
-    color: #1abc9c; /* Verde suave ao passar o mouse */
+header a:hover{
+    color: #1abc9c;
 }
+
 
 .vagasdiv {
     margin-top: 20px;
@@ -38,20 +46,30 @@ header a:hover {
 
 /* Estilo das vagas */
 .model {
+    flex: 1;
+    margin-right: 20px; /* Espaço entre a descrição da vaga e os ícones */  
     background-color: #ffffff; /* Fundo branco para os cards */
-    width: 50%;
-    margin: 20px auto;
     border: 1px solid #ddd; /* Borda cinza suave */
     border-radius: 10px; /* Cantos arredondados */
-    padding: 20px;
+    padding: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
 }
+
 
 .model:hover {
     transform: translateY(-4px); /* Leve movimento para cima */
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
+
+.box {
+    width: 50%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
 
 .title_date {
     display: flex;
@@ -60,7 +78,7 @@ header a:hover {
 }
 
 .model h2 {
-    margin: 10px 0;
+    margin: 0;
     font-size: 1.65em; /* Aumentado para mais destaque */
     color: #34495e; /* Azul escuro para títulos */
     text-align: left;
@@ -69,7 +87,7 @@ header a:hover {
 .model p {
     color: #555; /* Texto suave */
     margin-bottom: 10px;
-    line-height: 1.5; /* Aumenta o espaçamento entre linhas */
+    line-height: 1.0; /* Aumenta o espaçamento entre linhas */
 }
 
 .model span {
@@ -93,11 +111,11 @@ header a:hover {
 
 /* Estilos para a barra de pesquisa */
 .search-bar {
-    width: 55%;
+    width: 50%;
     display: flex;
     justify-content: center;
     margin: 0 auto; /* Aumenta o espaço vertical */
-    margin-top: 30px;
+    
 }
 
 .search-bar form {
@@ -110,7 +128,7 @@ header a:hover {
     padding: 12px;
     font-size: 1.1em; /* Aumentado para melhor legibilidade */
     border: 1px solid #ddd; /* Borda cinza suave */
-    border-radius: 5px 0 0 5px; /* Cantos arredondados apenas no lado esquerdo */
+    border-radius: 20px 0 0 20px; /* Cantos arredondados apenas no lado esquerdo */
     border-right: none; /* Remove a borda direita para o botão se alinhar ao input */
     transition: border-color 0.3s;
 }
@@ -146,82 +164,134 @@ header a:hover {
     text-align: center; /* Centraliza o texto */
 }
 
-/* Estilo do rodapé */
-.footer {
-    margin-top: auto; /* Empurra o footer para o final */
-    background-color: #34495e; /* Azul escuro */
-    color: #ffffff; /* Texto branco */
-    padding: 20px 0;
+.jobtypes{
     text-align: center;
-}
-
-.footer-content {
     margin: 0 auto;
+    width: 70%;
+    margin-top: 30px;
 }
-
-.footer-content p {
-    margin: 10px 0;
-}
-
-.footer-content a {
-    color: #1abc9c; /* Verde suave para links no rodapé */
-    text-decoration: none; /* Remove underline */
-    transition: text-decoration 0.3s;
-}
-
-.footer-content a:hover {
-    text-decoration: underline; /* Adiciona underline ao passar o mouse */
-}
-
-.footer-bottom {
-    margin-top: 20px;
-    font-size: 0.8em; /* Tamanho da fonte para direitos autorais */
-}
-
-.h3{
-    margin: 0;
-    text-align: center;
+.jobtypes a{
+    background-color: #ffffff;
+    margin-left: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #2c3e50;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Responsividade */
 @media screen and (max-width: 768px) {
     .model {
-        width: 80%;
-        padding: 15px;
+        width: 90%; /* Ocupar toda a largura */
+        padding: 10px; /* Ajustado para menos padding em telas pequenas */
+        margin: 10px 0; /* Espaço entre os itens na vertical */
+    }
+
+    .box {
+        width: 95%; /* Reduzir a largura */
+        flex-direction: column; /* Colocar os itens em coluna */
+        align-items: center; /* Centralizar os elementos */
+        padding: 15px; /* Espaçamento interno para melhor visualização */
     }
 
     .title_date {
         flex-direction: column;
         align-items: flex-start;
+        gap: 8px; /* Espaço entre título e data */
     }
 
     .search-bar {
-        width: 100%;
+        width: 90%; /* Reduzir a largura */
+        margin: 10px auto; /* Centralizar a barra de pesquisa */
+        
     }
+
     .search-bar form {
-        width: 80%;
+        display: flex; /* Manter o layout em flex para os elementos filhos */
+        justify-content: space-between; /* Espaçar os elementos */
     }
 
     .search-bar input[type="text"] {
-        width: 70%;
+        width: 70%; /* Ocupa 70% para o campo de busca */
+        border-radius: 5px; /* Ajustar bordas para uma aparência mais leve */
+        padding: 8px; /* Adicionar padding para conforto */
     }
+
+    .search-bar button {
+        width: 25%; /* Ocupa 25% para o botão de busca */
+        border-radius: 5px; /* Ajustar bordas */
+        padding: 8px; /* Adicionar padding */
+        font-size: 17px;
+    }
+
+    .jobtypes {
+        width: 100%; /* Ocupar toda a largura */
+    }
+
+    .jobtypes a {
+        margin-left: 0px;
+        gap: 3px;
+        font-size: 10px;
+    }
+
+
+    .compartilhar {
+        justify-content: center; /* Centralizar os ícones em telas menores */
+        margin-top: 15px; /* Mais espaço em cima em telas menores */
+    }
+
+    .share-icon {
+        width: 15px; /* Reduzir o tamanho dos ícones em telas menores */
+        height: 15px;
+    }
+
 }
 
 @media screen and (max-width: 480px) {
     .model {
-        width: 95%;
-        padding: 10px;
+        width: 90%; /* Ocupar quase toda a largura */
+        padding: 8px; /* Ajuste adicional */
     }
 
     .search-bar {
-        width: 100%;
-    }
-
-    .search-bar form {
-        width: 95%;
+        width: 95%; /* Barra de busca ocupa toda a largura */
+        margin: 5px auto; /* Reduzir o espaço superior/inferior */
     }
 
     .search-bar input[type="text"] {
-        width: 80%;
+        width: 80%; /* Ajusta o campo de busca para dispositivos menores */
     }
+
+    .search-bar button {
+        font-size: 10px;
+        width: 18%; /* Ajusta o botão para dispositivos menores */
+    }
+
+    .title_date {
+        gap: 4px; /* Reduz o espaço entre título e data */
+    }
+
+    .jobtypes {
+        width: 100%; /* Alinhar aos dispositivos menores */
+    }
+    .jobtypes a {
+        margin-left: 0px;
+        gap: 3px;
+        font-size: 10px;
+    }
+
+
+
+    .compartilhar {
+        flex-direction: row; /* Manter os ícones em linha */
+        justify-content: space-between; /* Espaçar os ícones */
+    }
+
+    .share-icon {
+        width: 20x;
+        height: 20px; /* Tamanho ainda menor em dispositivos muito pequenos */
+    }
+
 }

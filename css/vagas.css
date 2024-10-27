@@ -52,7 +52,7 @@ body {
     word-wrap: break-word;
 }
 
-.vaga-container a {
+.vagaLink {
     display: inline-block;
     padding: 10px 20px;
     background-color: #1a73e8; /* Botão azul */
@@ -63,28 +63,50 @@ body {
     font-weight: bold;
 }
 
-.vaga-container a:hover {
+.vagaLink:hover {
     background-color: #0c47a1; /* Escurece o botão no hover */
 }
 
 /* Estilo para o link de Voltar */
 .voltar-link {
+    padding: 10px 20px;
     display: inline-block;
     margin-bottom: 20px;
     font-size: 1em;
-    color: #1a73e8; /* Azul igual ao do botão */
+    color: #fff; /* Azul igual ao do botão */
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
+    background-color: #1a73e8;
 }
 
 .voltar-link:hover {
-
+    color: white;
     background-color: #0a3d88; /* Cor escura ao passar o mouse */
 }
 
-/* Restante do estilo da vaga continua igual */
+.compartilhar {
+    margin-top: 2em;
+    display: flex;
 
+    align-content: center;
+    gap: 2em;
+}
+
+/* Estilo dos ícones de compartilhamento */
+.share-icon {
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+    fill: #333; /* Cor padrão dos ícones de compartilhamento */
+    transition: transform 0.2s, fill 0.2s; /* Transição para cor e escala */
+}
+
+.share-icon:hover {
+    transform: scale(1.1); /* Aumenta o ícone levemente ao passar o mouse */
+    fill: #555; /* Cor ao passar o mouse */
+}
 
 /* Estilos responsivos */
 @media (max-width: 768px) {
